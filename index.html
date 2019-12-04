@@ -1,27 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Plivo App</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Plivo App</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 
-    <script src="https://www.amcharts.com/lib/3/ammap.js" type="text/javascript"></script>
-    <script src="https://www.amcharts.com/lib/3/maps/js/worldHigh.js" type="text/javascript"></script>
-    <script src="https://www.amcharts.com/lib/3/themes/dark.js" type="text/javascript"></script>
+  <script src="https://www.amcharts.com/lib/3/ammap.js" type="text/javascript"></script>
+  <script src="https://www.amcharts.com/lib/3/maps/js/worldHigh.js" type="text/javascript"></script>
+  <script src="https://www.amcharts.com/lib/3/themes/dark.js" type="text/javascript"></script>
 </head>
+
 <body>
-    <div class="app">
-        <div class="content">
-            <h2>Flexible pricing model for your needs</h2>
-            <h4>Select your contries on the map to begin</h4>
+  <div class="app">
+    <div class="content">
+      <h2>Flexible pricing model for your needs</h2>
+      <h4>Select your contries on the map to begin</h4>
 
-            <div id="mapdiv" style="width: 80%; height: 450px;"></div>
-        </div>
+      <div id="mapdiv" style="width: 80%; height: 450px;"></div>
+      <h4>
+        Choose your SMS services for the selected countries to get an estimate
+      </h4>
+      <div class="checkbox-container">
+        <span>SMS Services: </span>
+        <span>
+          <label class="checkbox-label">
+            <input type="checkbox" value="receive" name="sms" />
+            <span class="checkbox-custom"></span>
+          </label>
+          <span class="input-title">Send messages</span>
+        </span>
+        <span>
+          <label class="checkbox-label">
+            <input type="checkbox" value="send" name="sms">
+            <span class="checkbox-custom"></span>
+          </label>
+          <span class="input-title">Receive messages</span>
+        </span>
+      </div>
     </div>
+  </div>
+  </div>
 
-    <script type="text/javascript" src="script.js"></script>
+  <script type="text/javascript" src="script.js"></script>
 </body>
+
 </html>
+
+
+<!-- <label><input type="checkbox" value="send" name="sms" />
+        Send messages</label>
+    <label><input type="checkbox" value="receive" name="sms" />
+        Receive messages</label> -->
