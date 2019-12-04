@@ -1,0 +1,10 @@
+.app {
+    font-family: 'Roboto', sans-serif;
+    max-width: 1080px; 
+    margin: 100px auto;
+    text-align: center;
+}
+
+#mapdiv {
+    margin: 0 auto;
+}
