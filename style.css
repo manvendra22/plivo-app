@@ -108,6 +108,17 @@ h2 {
   border-radius: 0;
 }
 
+.tag-container {
+  margin-bottom: 40px;
+}
+
+.tag-container span {
+  border: 1px solid gray;
+  font-size: 14px;
+  padding: 5px 15px;
+  border-radius: 20px;
+}
+
 button {
   background-color: #2BB031;
   color: #fff;
@@ -118,8 +129,9 @@ button {
 }
 
 .card {
+  border: 1px solid #F7F8FC;
   margin: 40px auto;
-  height: 220px;
+  height: 300px;
   width: 80%;
 }
 
@@ -153,4 +165,8 @@ button {
 .small-text {
   color: #312E5A;
   font-size: 12px;
+}
+
+.contact-form {
+  margin-top: 40px;
 }
