@@ -1,16 +1,12 @@
 .app {
   font-family: "Roboto", sans-serif;
-  max-width: 1080px;
+  max-width: 900px;
   margin: 100px auto;
   text-align: center;
 }
 
 h2 {
   color: #312E5A;
-}
-
-#mapdiv {
-  margin: 40px auto;
 }
 
 .checkbox-container {
@@ -130,9 +126,8 @@ button {
 
 .card {
   border: 1px solid #F7F8FC;
-  margin: 40px auto;
-  height: 300px;
-  width: 80%;
+  margin: 40px 0;
+  min-height: 300px;
 }
 
 .card-cost {
@@ -142,12 +137,12 @@ button {
   padding: 50px 0;
 }
 
-.card-cost > :first-child {
+.card-cost> :first-child {
   border-right: 1px solid lightgray;
 }
 
-.card-cost > div {
-  padding:  0 40px;
+.card-cost>div {
+  padding: 0 40px;
 }
 
 .sub-text {
@@ -168,5 +163,11 @@ button {
 }
 
 .contact-form {
-  margin-top: 40px;
+  margin: 40px 0;
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  background-color: #F7F8FC;
+  padding: 50px;
+  text-align: left;
 }
