@@ -140,10 +140,10 @@ function getEstimate() {
     let iData = incomingData.find(data => data.indexOf(value.id) !== -1)
     let oData = outgoingData.find(data => data.indexOf(value.id) !== -1)
 
-    if (iData) {
+    if (iData && Number(iData[9])) {
       incomingTotal += Number(iData[9])
     }
-    if (oData) {
+    if (oData && Number(oData[6])) {
       outgoingTotal += Number(oData[6])
     }
   })
