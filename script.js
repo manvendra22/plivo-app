@@ -38,22 +38,14 @@ var map = AmCharts.makeChart("mapdiv", {
       e.chart.returnInitialColor(area);
 
       // Update the list
-      document.getElementById("selected").innerHTML = JSON.stringify(getSelectedCountries());
+      updateList(area.title)
     }
   }]
 });
 
-/**
- * Function which extracts currently selected country list.
- * Returns array consisting of country ISO2 codes
- */
-function getSelectedCountries() {
-  var selected = [];
-  for (var i = 0; i < map.dataProvider.areas.length; i++) {
-    if (map.dataProvider.areas[i].showAsSelected) {
-      // selected.push(map.dataProvider.areas[i].id);
-      selected.push(map.dataProvider.areas[i].title);
-    }
-  }
-  return selected;
+function updateList(area) {
+  var element = document.createElement('span')
+  element.innerHTML = area
+
+  document.getElementById("selected").appendChild(element)
 }

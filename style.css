@@ -28,10 +28,10 @@ h2 {
   position: relative;
   margin: auto;
   cursor: pointer;
-  height: 10px;
-  width: 10px;
+  height: 13px;
+  width: 13px;
   clear: both;
-  top: -4px;
+  top: -6px;
   left: -15px;
 }
 
@@ -43,10 +43,10 @@ h2 {
 
 .checkbox-label .checkbox-custom {
   position: absolute;
-  top: 2px;
-  left: 8px;
-  height: 10px;
-  width: 10px;
+  top: 5px;
+  left: 5px;
+  height: 13px;
+  width: 13px;
   background-color: transparent;
   /* border-radius: 5px; */
   transition: all 0.3s ease-out;
@@ -95,9 +95,9 @@ h2 {
   transform: rotate(45deg) scale(1);
   opacity: 1;
   left: 2px;
-  top: 0px;
-  width: 3px;
-  height: 7px;
+  top: -1px;
+  width: 5px;
+  height: 9px;
   border: solid #fff;
   border-width: 0 2px 2px 0;
   background-color: transparent;
@@ -106,12 +106,14 @@ h2 {
 
 .tag-container {
   margin-bottom: 40px;
+  min-height: 20px;
 }
 
 .tag-container span {
   border: 1px solid gray;
   font-size: 14px;
   padding: 5px 15px;
+  margin: 0 5px;
   border-radius: 20px;
 }
 
