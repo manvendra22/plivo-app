@@ -247,3 +247,13 @@ button:hover {
   color: #2BB031;
   font-size: 14px;
 }
+
+.slider.slider-horizontal .slider-tick-container div:nth-of-type() {
+  left: 8%;
+}
+
+.slider.slider-horizontal .slider-tick-container:nth-child(2) {}
+
+.slider.slider-horizontal .slider-tick-container:nth-child(3) {}
+
+.slider.slider-horizontal .slider-tick-container:nth-child(4) {}
