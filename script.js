@@ -1,6 +1,6 @@
 let selected = []
 
-var map = AmCharts.makeChart("mapdiv", {
+let map = AmCharts.makeChart("mapdiv", {
   type: "map",
   theme: "dark",
   projection: "mercator",
@@ -38,7 +38,7 @@ var map = AmCharts.makeChart("mapdiv", {
       if (e.mapObject.objectType !== "MapArea")
         return;
 
-      var area = e.mapObject;
+      let area = e.mapObject;
 
       if (area.showAsSelected) {
         area.showAsSelected = false;
@@ -58,7 +58,7 @@ function addInList(title, id) {
     id,
     title
   })
-  var element = document.createElement('span')
+  let element = document.createElement('span')
   element.innerHTML = title
   element.id = id
   element.classList.add('tag')
@@ -72,12 +72,12 @@ function handleEvent(event) {
 }
 
 function deleteTag(id) {
-  var element = document.getElementById(id);
+  let element = document.getElementById(id);
   element.parentNode.removeChild(element);
 
   selected = selected.filter(value => value.id != element.id)
 
-  for (var i = 0; i < map.dataProvider.areas.length; i++) {
+  for (let i = 0; i < map.dataProvider.areas.length; i++) {
     if (map.dataProvider.areas[i].showAsSelected && map.dataProvider.areas[i].id == element.id) {
       map.dataProvider.areas[i].showAsSelected = false
     }

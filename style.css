@@ -48,7 +48,7 @@ h2 {
   height: 13px;
   width: 13px;
   background-color: transparent;
-  /* border-radius: 5px; */
+  border-radius: 2px;
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
@@ -60,7 +60,6 @@ h2 {
 
 .checkbox-label input:checked~.checkbox-custom {
   background-color: #2BB031;
-  /* border-radius: 5px; */
   -webkit-transform: rotate(0deg) scale(1);
   -ms-transform: rotate(0deg) scale(1);
   transform: rotate(0deg) scale(1);
@@ -74,7 +73,6 @@ h2 {
   content: "";
   height: 0px;
   width: 0px;
-  /* border-radius: 5px; */
   border: solid #fff;
   border-width: 0 3px 3px 0;
   -webkit-transform: rotate(0deg) scale(0);
@@ -104,10 +102,10 @@ h2 {
   border-radius: 0;
 }
 
+/* Styling Dynamic Tags Starts */
 .tag-container {
-  margin-bottom: 40px;
+  margin: 20px auto;
   min-height: 20px;
-  max-width: 80%;
 }
 
 .tag {
@@ -119,10 +117,6 @@ h2 {
   border-radius: 20px;
   pointer-events: none;
 }
-
-/* .tag:hover {
-  opacity: 1;
-} */
 
 .tag:before,
 .tag:after {
