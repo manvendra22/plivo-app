@@ -38,8 +38,6 @@ var map = AmCharts.makeChart("mapdiv", {
 
       var area = e.mapObject;
 
-      // Toggle showAsSelected
-      // area.showAsSelected = !area.showAsSelected;
       area.showAsSelected = true;
       e.chart.returnInitialColor(area);
 
@@ -49,10 +47,9 @@ var map = AmCharts.makeChart("mapdiv", {
   }]
 });
 
-var selected = []
+let selected = []
 
 function updateList(title, id) {
-
   if (!selected.find(value => value.id === id)) {
     selected.push({
       id,
@@ -72,12 +69,14 @@ function deleteTag(e) {
   var element = document.getElementById(e.target.id);
   element.parentNode.removeChild(element);
 
-  // for (var i = 0; i < map.dataProvider.areas.length; i++) {
-  //   if (map.dataProvider.areas[i].showAsSelected)
-  //     selected.push(map.dataProvider.areas[i].id);
-  // }
+  for (var i = 0; i < map.dataProvider.areas.length; i++) {
+    if (map.dataProvider.areas[i].showAsSelected && map.dataProvider.areas[i].id == element.id) {
+      map.dataProvider.areas[i].showAsSelected = false
+      selected = selected.filter(value => value.id != element.id)
+    }
+  }
 
-  console.log("MAP ", map)
+  map.validateData();
 }
 
 // function getSelectedCountries() {
