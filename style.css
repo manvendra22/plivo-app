@@ -167,7 +167,7 @@ button:hover {
 .card {
   border: 1px solid #F7F8FC;
   margin: 40px 0;
-  min-height: 300px;
+  min-height: 400px;
 }
 
 .card-cost {
@@ -210,4 +210,40 @@ button:hover {
   background-color: #F7F8FC;
   padding: 50px;
   text-align: left;
+}
+
+.slider-container {
+  padding: 40px;
+}
+
+#message-slider .slider-selection {
+  background: #2BB031;
+}
+
+#message-slider .slider-handle {
+  background: #312E5A;
+}
+
+.slider.slider-horizontal {
+  width: 100%;
+}
+
+.slider-tick {
+  height: 16px;
+  width: 16px;
+  top: 2px;
+  background: white;
+  border: .5px solid lightgray;
+  box-shadow: none;
+}
+
+.slider-tick.in-selection {
+  background: #312E5A;
+  border: none
+}
+
+.slider.slider-horizontal .slider-tick-label-container {
+  margin-top: 40px;
+  color: #2BB031;
+  font-size: 14px;
 }

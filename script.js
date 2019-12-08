@@ -150,9 +150,11 @@ function getEstimate() {
 
   document.getElementById("send-value").innerHTML = `$ ${incomingTotal}`
   document.getElementById("receive-value").innerHTML = `$ ${outgoingTotal}`
-
-  console.log(incomingTotal, outgoingTotal)
-  console.log(selected)
-  console.log(incomingData)
-  console.log(outgoingData)
 }
+
+var slider = new Slider('#message-count', {
+  formatter: function (value) {
+    console.log("VALUE ", value)
+    return 'Current value: ' + value;
+  }
+});
