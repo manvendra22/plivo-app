@@ -28,82 +28,80 @@
 </head>
 
 <body>
-  <div class="app">
-    <div class="content">
-      <h2>Flexible pricing model for your needs</h2>
-      <h4>Select your contries on the map to begin</h4>
+  <div class="app container">
+    <h2>Flexible pricing model for your needs</h2>
+    <h4>Select your countries on the map to begin</h4>
 
-      <div id="mapdiv" style="width: 100%; height: 450px; margin: 40px 0;"></div>
-      <h4>
-        Choose your SMS services for the selected countries to get an estimate
-      </h4>
-      <div class="checkbox-container">
-        <span>SMS Services: </span>
-        <span>
-          <label class="checkbox-label">
-            <input type="checkbox" value="receive" name="sms" />
-            <span class="checkbox-custom"></span>
-          </label>
-          <span class="input-title">Send messages</span>
-        </span>
-        <span>
-          <label class="checkbox-label">
-            <input type="checkbox" value="send" name="sms">
-            <span class="checkbox-custom"></span>
-          </label>
-          <span class="input-title">Receive messages</span>
-        </span>
-      </div>
-      <div id="selected" class="tag-container">
-      </div>
-      <div>
-        <button>Get estimate</button>
-      </div>
-      <div class="card">
-        <div class="card-cost">
-          <div>
-            <div class="sub-text">Send messages at</div>
-            <div class="main-text">$0.0050</div>
-            <div class="small-text">estimated cost</div>
-          </div>
-          <div>
-            <div class="sub-text">Receive messages at</div>
-            <div class="main-text">$0.0050</div>
-            <div class="small-text">estimated cost</div>
-          </div>
+    <div id="mapdiv" style="width: 100%; height: 450px; margin: 40px 0;"></div>
+    <h4>
+      Choose your SMS services for the selected countries to get an estimate
+    </h4>
+    <div class="checkbox-container">
+      <span>SMS Services: </span>
+      <span>
+        <label class="checkbox-label">
+          <input type="checkbox" value="receive" name="sms" />
+          <span class="checkbox-custom"></span>
+        </label>
+        <span class="input-title">Send messages</span>
+      </span>
+      <span>
+        <label class="checkbox-label">
+          <input type="checkbox" value="send" name="sms">
+          <span class="checkbox-custom"></span>
+        </label>
+        <span class="input-title">Receive messages</span>
+      </span>
+    </div>
+    <div id="selected" class="tag-container">
+    </div>
+    <div>
+      <button onclick="getEstimate()">Get estimate</button>
+    </div>
+    <div class="card">
+      <div class="card-cost">
+        <div>
+          <div class="sub-text">Send messages at</div>
+          <div class="main-text">$0.00</div>
+          <div class="small-text">estimated cost</div>
+        </div>
+        <div>
+          <div class="sub-text">Receive messages at</div>
+          <div class="main-text">$0.00</div>
+          <div class="small-text">estimated cost</div>
         </div>
       </div>
-      <div>
-        <button>View Pricing</button>
-      </div>
-      <div class="contact-form">
-        <form>
-          <div class="row form-group">
-            <div class="col-md-6">
-              <label>First Name</label>
-              <input type="text" class="form-control" name="first_name" placeholder="Jane">
-            </div>
-            <div class="col-md-6">
-              <label>Last Name</label>
-              <input type="text" class="form-control" name="last_name" placeholder="Doe">
-            </div>
+    </div>
+    <div>
+      <button>View Pricing</button>
+    </div>
+    <div class="contact-form">
+      <form>
+        <div class="row form-group">
+          <div class="col-md-6">
+            <label>First Name</label>
+            <input type="text" class="form-control" name="first_name" placeholder="Jane">
           </div>
-          <div class="form-group">
-            <label>Work Email</label>
-            <input type="email" class="form-control" name="email_id" placeholder="jane.doe@example.com">
+          <div class="col-md-6">
+            <label>Last Name</label>
+            <input type="text" class="form-control" name="last_name" placeholder="Doe">
           </div>
-          <div class="form-group">
-            <label>Phone Number</label>
-            <input type="number" class="form-control" name="phone_no" placeholder="888-888-8888">
-          </div>
-          <div class="form-group">
-            <label>Description</label>
-            <textarea class="form-control" placeholder="Please tell us about your requirements in detail"
-              rows="3"></textarea>
-          </div>
-          <button type="submit">Contact Sales</button>
-        </form>
-      </div>
+        </div>
+        <div class="form-group">
+          <label>Work Email</label>
+          <input type="email" class="form-control" name="email_id" placeholder="jane.doe@example.com">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="number" class="form-control" name="phone_no" placeholder="888-888-8888">
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-control" placeholder="Please tell us about your requirements in detail"
+            rows="3"></textarea>
+        </div>
+        <button type="submit">Contact Sales</button>
+      </form>
     </div>
   </div>
   </div>

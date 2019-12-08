@@ -1,4 +1,49 @@
 let selected = []
+let incomingData = [];
+let outgoingData = [];
+
+(function readDataOnLoad() {
+  readIncomingTextFile()
+  readOutcomingTextFile()
+})()
+
+function readIncomingTextFile() {
+  var rawFile = new XMLHttpRequest();
+  rawFile.open("GET", "./data/plivo_incoming.csv", true);
+  rawFile.onreadystatechange = function () {
+    if (rawFile.readyState === 4) {
+      if (rawFile.status === 200 || rawFile.status == 0) {
+        var csvData = new Array()
+        var allText = rawFile.responseText;
+        var jsonObject = allText.split(/\r?\n|\r/)
+        for (var i = 0; i < jsonObject.length; i++) {
+          csvData.push(jsonObject[i].split(','));
+        }
+        incomingData = csvData
+      }
+    }
+  }
+  rawFile.send(null);
+};
+
+function readOutcomingTextFile() {
+  var rawFile = new XMLHttpRequest();
+  rawFile.open("GET", "./data/plivo_outgoing.csv", true);
+  rawFile.onreadystatechange = function () {
+    if (rawFile.readyState === 4) {
+      if (rawFile.status === 200 || rawFile.status == 0) {
+        var csvData = new Array()
+        var allText = rawFile.responseText;
+        var jsonObject = allText.split(/\r?\n|\r/)
+        for (var i = 0; i < jsonObject.length; i++) {
+          csvData.push(jsonObject[i].split(','));
+        }
+        outgoingData = csvData
+      }
+    }
+  }
+  rawFile.send(null);
+};
 
 let map = AmCharts.makeChart("mapdiv", {
   type: "map",
@@ -84,4 +129,29 @@ function deleteTag(id) {
   }
 
   map.validateData();
+}
+
+function getEstimate() {
+
+  let incomingTotal = 0
+  let outgoingTotal = 0
+
+  selected.forEach(value => {
+    let iData = incomingData.find(data => data.indexOf(value.id) !== -1)
+    let oData = outgoingData.find(data => data.indexOf(value.id) !== -1)
+
+    if (iData) {
+      incomingTotal += Number(iData[9])
+    }
+    if (oData) {
+      outgoingTotal += Number(oData[6])
+    }
+  })
+
+  console.log(incomingTotal, outgoingTotal)
+
+
+  console.log(selected)
+  console.log(incomingData)
+  console.log(outgoingData)
 }

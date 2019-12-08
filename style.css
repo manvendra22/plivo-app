@@ -104,8 +104,11 @@ h2 {
 
 /* Styling Dynamic Tags Starts */
 .tag-container {
+  width: 80%;
   margin: 20px auto;
-  min-height: 20px;
+  min-height: 50px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .tag {
@@ -116,13 +119,14 @@ h2 {
   margin: 0 5px;
   border-radius: 20px;
   pointer-events: none;
+  margin-bottom: 15px;
 }
 
 .tag:before,
 .tag:after {
   position: absolute;
-  top: 8px;
-  right: 10px;
+  top: 11px;
+  right: 12px;
   content: ' ';
   height: 10px;
   width: 2px;
