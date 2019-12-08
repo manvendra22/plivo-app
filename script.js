@@ -1,3 +1,5 @@
+let selected = []
+
 var map = AmCharts.makeChart("mapdiv", {
   type: "map",
   theme: "dark",
@@ -38,52 +40,48 @@ var map = AmCharts.makeChart("mapdiv", {
 
       var area = e.mapObject;
 
-      area.showAsSelected = true;
-      e.chart.returnInitialColor(area);
+      if (area.showAsSelected) {
+        area.showAsSelected = false;
+        deleteTag(area.id)
+      } else {
+        area.showAsSelected = true;
+        addInList(area.title, area.id)
+      }
 
-      // Update the list
-      updateList(area.title, area.id)
+      e.chart.returnInitialColor(area);
     }
   }]
 });
 
-let selected = []
+function addInList(title, id) {
+  selected.push({
+    id,
+    title
+  })
+  var element = document.createElement('span')
+  element.innerHTML = title
+  element.id = id
+  element.classList.add('tag')
+  element.onclick = handleEvent;
 
-function updateList(title, id) {
-  if (!selected.find(value => value.id === id)) {
-    selected.push({
-      id,
-      title
-    })
-    var element = document.createElement('span')
-    element.innerHTML = title
-    element.id = id
-    element.classList.add('tag')
-    element.onclick = deleteTag;
-
-    document.getElementById("selected").appendChild(element)
-  }
+  document.getElementById("selected").appendChild(element)
 }
 
-function deleteTag(e) {
-  var element = document.getElementById(e.target.id);
+function handleEvent(event) {
+  deleteTag(event.target.id)
+}
+
+function deleteTag(id) {
+  var element = document.getElementById(id);
   element.parentNode.removeChild(element);
+
+  selected = selected.filter(value => value.id != element.id)
 
   for (var i = 0; i < map.dataProvider.areas.length; i++) {
     if (map.dataProvider.areas[i].showAsSelected && map.dataProvider.areas[i].id == element.id) {
       map.dataProvider.areas[i].showAsSelected = false
-      selected = selected.filter(value => value.id != element.id)
     }
   }
 
   map.validateData();
 }
-
-// function getSelectedCountries() {
-//   var selected = [];
-//   for (var i = 0; i < map.dataProvider.areas.length; i++) {
-//     if (map.dataProvider.areas[i].showAsSelected)
-//       selected.push(map.dataProvider.areas[i].id);
-//   }
-//   return selected;
-// }
