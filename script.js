@@ -154,7 +154,15 @@ function getEstimate() {
 
 var slider = new Slider('#message-count', {
   formatter: function (value) {
-    console.log("VALUE ", value)
+    if (value >= 2000) {
+      changeCTA('Contact Sales')
+    } else {
+      changeCTA('View Pricing')
+    }
     return 'Current value: ' + value;
   }
 });
+
+function changeCTA(value) {
+  document.getElementById("slider-cta").innerHTML = value
+}
