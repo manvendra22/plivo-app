@@ -107,14 +107,42 @@ h2 {
 .tag-container {
   margin-bottom: 40px;
   min-height: 20px;
+  max-width: 80%;
 }
 
-.tag-container span {
+.tag {
+  position: relative;
   border: 1px solid gray;
   font-size: 14px;
-  padding: 5px 15px;
+  padding: 5px 30px 5px 15px;
   margin: 0 5px;
   border-radius: 20px;
+  pointer-events: none;
+}
+
+/* .tag:hover {
+  opacity: 1;
+} */
+
+.tag:before,
+.tag:after {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  content: ' ';
+  height: 10px;
+  width: 2px;
+  background-color: #333;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.tag:before {
+  transform: rotate(45deg);
+}
+
+.tag:after {
+  transform: rotate(-45deg);
 }
 
 button {
