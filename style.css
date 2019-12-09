@@ -164,6 +164,11 @@ button:hover {
   box-shadow: 0 5px 15px 2px rgba(51, 51, 51, 0.1);
 }
 
+button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
 .card {
   border: 1px solid #F7F8FC;
   margin: 40px 0;

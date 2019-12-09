@@ -110,6 +110,8 @@ function addInList(title, id) {
   element.onclick = handleEvent;
 
   document.getElementById("selected").appendChild(element)
+
+  checkAndUpdateCTA()
 }
 
 function handleEvent(event) {
@@ -128,7 +130,9 @@ function deleteTag(id) {
     }
   }
 
-  map.validateData();
+  map.validateData()
+
+  checkAndUpdateCTA()
 }
 
 function getEstimate() {
@@ -165,4 +169,14 @@ var slider = new Slider('#message-count', {
 
 function changeCTA(value) {
   document.getElementById("slider-cta").innerHTML = value
+}
+
+function checkAndUpdateCTA() {
+  let estimateCTA = document.getElementById('estimate-cta')
+
+  if (selected.length) {
+    estimateCTA.disabled = false
+  } else {
+    estimateCTA.disabled = true
+  }
 }
