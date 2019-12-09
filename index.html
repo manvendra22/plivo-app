@@ -62,10 +62,13 @@
     </div>
     <div id="selected" class="tag-container">
     </div>
+    
     <div>
-      <button onclick="getEstimate()">Get estimate</button>
+      <button  data-toggle="collapse" href="#cost-container" aria-expanded="false" aria-controls="cost-container"  onclick="getEstimate()">Get estimate</button>
     </div>
-    <div class="card">
+    
+    <div class="collapse" id="cost-container">    
+      <div class="card">
       <div class="card-cost">
         <div>
           <div class="sub-text">Send messages at</div>
@@ -85,8 +88,11 @@
       </div>
     </div>
     <div>
-      <button id="slider-cta">View Pricing</button>
+        <button  data-toggle="collapse" href="#form-container" aria-expanded="false" aria-controls="form-container" id="slider-cta">View Pricing</button>
+      </div>
     </div>
+
+    <div class="collapse" id="form-container">   
     <div class="contact-form">
       <form>
         <div class="row form-group">
@@ -115,6 +121,7 @@
         <button type="submit">Contact Sales</button>
       </form>
     </div>
+  </div>
   </div>
   </div>
 
