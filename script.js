@@ -159,8 +159,8 @@ function getEstimate() {
     }
   })
 
-  document.getElementById("send-value").innerHTML = `$ ${incomingTotal}`
-  document.getElementById("receive-value").innerHTML = `$ ${outgoingTotal}`
+  document.getElementById("send-value").innerHTML = `$ ${outgoingTotal}`
+  document.getElementById("receive-value").innerHTML = `$ ${incomingTotal}`
 }
 
 var slider = new Slider('#message-count', {
