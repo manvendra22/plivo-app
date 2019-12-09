@@ -143,14 +143,19 @@ function getEstimate() {
   let outgoingTotal = 0
 
   selected.forEach(value => {
-    let iData = incomingData.find(data => data.indexOf(value.id) !== -1)
-    let oData = outgoingData.find(data => data.indexOf(value.id) !== -1)
+    if (receiveCheckValue) {
+      let iData = incomingData.find(data => data.indexOf(value.id) !== -1)
 
-    if (iData && Number(iData[9])) {
-      incomingTotal += Number(iData[9])
+      if (iData && Number(iData[9])) {
+        incomingTotal += Number(iData[9])
+      }
     }
-    if (oData && Number(oData[6])) {
-      outgoingTotal += Number(oData[6])
+    if (sendCheckValue) {
+      let oData = outgoingData.find(data => data.indexOf(value.id) !== -1)
+
+      if (oData && Number(oData[6])) {
+        outgoingTotal += Number(oData[6])
+      }
     }
   })
 
@@ -186,12 +191,12 @@ function checkAndUpdateCTA() {
 let receiveCheck = document.getElementById('receiveCheck')
 let sendCheck = document.getElementById('sendCheck')
 
-receiveCheck.onclick = function() {
+receiveCheck.onclick = function () {
   receiveCheckValue = receiveCheck.checked
   checkAndUpdateCTA()
 }
 
-sendCheck.onclick = function() {
+sendCheck.onclick = function () {
   sendCheckValue = sendCheck.checked
   checkAndUpdateCTA()
 }
