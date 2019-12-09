@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+.form-control::-webkit-input-placeholder {
+  color: lightgray;
+}
+
 h2 {
   color: #312E5A;
 }

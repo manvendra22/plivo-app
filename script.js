@@ -175,14 +175,25 @@ var slider = new Slider('#message-count', {
   }
 });
 
+function setDummyData() {
+  fetch('https://my.api.mockaroo.com/plivo.json?key=e66ba0c0')
+    .then(response => response.json())
+    .then(response => {
+      let formElement = document.getElementById("contact-form")
+      formElement.elements["first_name"].value = response.first_name
+      formElement.elements["last_name"].value = response.last_name
+      formElement.elements["work_email"].value = response.work_email
+      formElement.elements["phone"].value = Number(response.phone)
+
+      $('#form-container').collapse()
+    })
+}
 
 function handleContactSales() {
   let sliderCTA = document.getElementById("slider-cta")
 
   sliderCTA.innerHTML = 'Contact Sales'
-  sliderCTA.onclick = function (e) {
-    $('#form-container').collapse()
-  }
+  sliderCTA.onclick = setDummyData
 }
 
 function handleViewPricing() {
@@ -217,7 +228,7 @@ sendCheck.onclick = function () {
   checkAndUpdateCTA()
 }
 
-let formElem = document.getElementById("form-element")
+let formElem = document.getElementById("contact-form")
 
 formElem.onsubmit = async (e) => {
   e.preventDefault();
