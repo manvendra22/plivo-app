@@ -12,8 +12,8 @@ h2 {
 .checkbox-container {
   display: flex;
   justify-content: center;
-  font-size: 13px;
-  margin-bottom: 20px;
+  font-size: 15px;
+  margin: 20px 0;
 }
 
 .checkbox-container>span {
@@ -21,6 +21,9 @@ h2 {
   margin-right: 25px;
 }
 
+.checkbox-container>span:nth-child(1) {
+  font-weight: bold;
+}
 
 /* Styling Checkbox Starts */
 .checkbox-label {
@@ -28,8 +31,8 @@ h2 {
   position: relative;
   margin: auto;
   cursor: pointer;
-  height: 13px;
-  width: 13px;
+  height: 14px;
+  width: 14px;
   clear: both;
   top: -6px;
   left: -15px;
@@ -45,8 +48,8 @@ h2 {
   position: absolute;
   top: 5px;
   left: 5px;
-  height: 13px;
-  width: 13px;
+  height: 14px;
+  width: 14px;
   background-color: transparent;
   border-radius: 2px;
   transition: all 0.3s ease-out;
@@ -92,7 +95,7 @@ h2 {
   -ms-transform: rotate(45deg) scale(1);
   transform: rotate(45deg) scale(1);
   opacity: 1;
-  left: 2px;
+  left: 3px;
   top: -1px;
   width: 5px;
   height: 9px;

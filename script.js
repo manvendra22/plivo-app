@@ -1,6 +1,8 @@
 let selected = []
 let incomingData = [];
 let outgoingData = [];
+let sendCheckValue = false;
+let receiveCheckValue = false;
 
 (function readDataOnLoad() {
   readIncomingTextFile()
@@ -174,9 +176,22 @@ function changeCTA(value) {
 function checkAndUpdateCTA() {
   let estimateCTA = document.getElementById('estimate-cta')
 
-  if (selected.length) {
+  if (selected.length && (sendCheckValue || receiveCheckValue)) {
     estimateCTA.disabled = false
   } else {
     estimateCTA.disabled = true
   }
+}
+
+let receiveCheck = document.getElementById('receiveCheck')
+let sendCheck = document.getElementById('sendCheck')
+
+receiveCheck.onclick = function() {
+  receiveCheckValue = receiveCheck.checked
+  checkAndUpdateCTA()
+}
+
+sendCheck.onclick = function() {
+  sendCheckValue = sendCheck.checked
+  checkAndUpdateCTA()
 }
