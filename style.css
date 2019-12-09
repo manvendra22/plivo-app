@@ -22,7 +22,7 @@ h2 {
 }
 
 .checkbox-container>span:nth-child(1) {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 /* Styling Checkbox Starts */
@@ -95,10 +95,10 @@ h2 {
   -ms-transform: rotate(45deg) scale(1);
   transform: rotate(45deg) scale(1);
   opacity: 1;
-  left: 3px;
+  left: 2px;
   top: -1px;
-  width: 5px;
-  height: 9px;
+  width: 6px;
+  height: 10px;
   border: solid #fff;
   border-width: 0 2px 2px 0;
   background-color: transparent;

@@ -4,6 +4,7 @@ let outgoingData = [];
 let sendCheckValue = false;
 let receiveCheckValue = false;
 
+
 (function readDataOnLoad() {
   readIncomingTextFile()
   readOutcomingTextFile()
@@ -166,16 +167,35 @@ function getEstimate() {
 var slider = new Slider('#message-count', {
   formatter: function (value) {
     if (value >= 2000) {
-      changeCTA('Contact Sales')
+      handleContactSales()
     } else {
-      changeCTA('View Pricing')
+      handleViewPricing()
     }
     return 'Current value: ' + value;
   }
 });
 
-function changeCTA(value) {
-  document.getElementById("slider-cta").innerHTML = value
+
+function handleContactSales() {
+  let sliderCTA = document.getElementById("slider-cta")
+
+  sliderCTA.innerHTML = 'Contact Sales'
+  sliderCTA.onclick = function (e) {
+    $('#form-container').collapse()
+  }
+  // data - toggle = "collapse"
+  // href = "#form-container"
+  // aria - expanded = "false"
+  // aria - controls = "form-container"
+}
+
+function handleViewPricing() {
+  let sliderCTA = document.getElementById("slider-cta")
+
+  sliderCTA.innerHTML = 'View Pricing'
+  sliderCTA.onclick = function (e) {
+    window.open('https://www.plivo.com/sms/pricing/us/', '_blank');
+  }
 }
 
 function checkAndUpdateCTA() {
