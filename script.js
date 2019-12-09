@@ -183,10 +183,6 @@ function handleContactSales() {
   sliderCTA.onclick = function (e) {
     $('#form-container').collapse()
   }
-  // data - toggle = "collapse"
-  // href = "#form-container"
-  // aria - expanded = "false"
-  // aria - controls = "form-container"
 }
 
 function handleViewPricing() {
@@ -220,3 +216,18 @@ sendCheck.onclick = function () {
   sendCheckValue = sendCheck.checked
   checkAndUpdateCTA()
 }
+
+let formElem = document.getElementById("form-element")
+
+formElem.onsubmit = async (e) => {
+  e.preventDefault();
+
+  let response = await fetch('https://hooks.zapier.com/hooks/catch/6257988/o6qgzyj/', {
+    method: 'POST',
+    body: new FormData(formElem)
+  });
+
+  let result = await response.json();
+
+  alert(result.status);
+};
