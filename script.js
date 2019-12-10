@@ -144,40 +144,44 @@ function getEstimate() {
   let outgoingTotal = 0
 
   selected.forEach(value => {
-    console.log("DATA", value)
-
     if (receiveCheckValue) {
       let iData = incomingData.filter(data => data.indexOf(value.title) !== -1)
       let count = 0;
 
-      let iTotal = iData.reduce((total, current) =>{
-        if(Number(current[9])) {
+      let iTotal = iData.reduce((total, current) => {
+        if (Number(current[9])) {
           count++
-          total = Number(current[9])+total
+          total = Number(current[9]) + total
         }
         return total
       }, 0)
 
-      incomingTotal = iTotal / count
+      if (count) {
+        iTotal = iTotal / count
+        incomingTotal += iTotal
+      }
     }
     if (sendCheckValue) {
       let oData = outgoingData.filter(data => data.indexOf(value.title) !== -1)
       let count = 0;
 
-      let oTotal = oData.reduce((total, current) =>{
-        if(Number(current[6])) {
+      let oTotal = oData.reduce((total, current) => {
+        if (Number(current[6])) {
           count++
-          total = Number(current[6])+total
+          total = Number(current[6]) + total
         }
         return total
       }, 0)
 
-      outgoingTotal = oTotal / count
+      if (count) {
+        oTotal = oTotal / count
+        outgoingTotal += oTotal
+      }
     }
   })
 
-  document.getElementById("send-value").innerHTML = `$ ${outgoingTotal}`
-  document.getElementById("receive-value").innerHTML = `$ ${incomingTotal}`
+  document.getElementById("send-value").innerHTML = `$ ${outgoingTotal.toFixed(2)}`
+  document.getElementById("receive-value").innerHTML = `$ ${incomingTotal.toFixed(2)}`
 }
 
 var slider = new Slider('#message-count', {
