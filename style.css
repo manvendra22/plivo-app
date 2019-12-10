@@ -133,10 +133,10 @@ h2 {
 .tag:before,
 .tag:after {
   position: absolute;
-  top: 11px;
-  right: 12px;
+  top: 10px;
+  right: 13px;
   content: ' ';
-  height: 10px;
+  height: 11px;
   width: 2px;
   background-color: #333;
   pointer-events: auto;
