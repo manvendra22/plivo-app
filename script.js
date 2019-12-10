@@ -180,8 +180,8 @@ function getEstimate() {
     }
   })
 
-  document.getElementById("send-value").innerHTML = `$ ${outgoingTotal.toFixed(2)}`
-  document.getElementById("receive-value").innerHTML = `$ ${incomingTotal.toFixed(2)}`
+  document.getElementById("send-value").innerHTML = `$ ${outgoingTotal.toFixed(4)}`
+  document.getElementById("receive-value").innerHTML = `$ ${incomingTotal.toFixed(4)}`
 }
 
 var slider = new Slider('#message-count', {
