@@ -116,6 +116,7 @@ h2 {
   min-height: 50px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .tag {
