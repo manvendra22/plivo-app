@@ -138,6 +138,8 @@ function deleteTag(id) {
   checkAndUpdateCTA()
 }
 
+let flag = true;
+
 function getEstimate() {
 
   let incomingTotal = 0
@@ -182,6 +184,9 @@ function getEstimate() {
 
   document.getElementById("send-value").innerHTML = `$ ${outgoingTotal.toFixed(4)}`
   document.getElementById("receive-value").innerHTML = `$ ${incomingTotal.toFixed(4)}`
+
+  flag && $('#cost-container').collapse()
+  flag = false;
 }
 
 var slider = new Slider('#message-count', {
