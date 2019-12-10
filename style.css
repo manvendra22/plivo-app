@@ -228,6 +228,14 @@ button:disabled {
   padding: 40px;
 }
 
+.slider-label-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  color: #2BB031;
+  font-size: 14px;
+}
+
 #message-slider .slider-selection {
   background: #2BB031;
 }
@@ -237,7 +245,7 @@ button:disabled {
 }
 
 .slider.slider-horizontal {
-  width: 100%;
+  width: 95%;
 }
 
 .slider-tick {
@@ -252,12 +260,6 @@ button:disabled {
 .slider-tick.in-selection {
   background: #312E5A;
   border: none
-}
-
-.slider.slider-horizontal .slider-tick-label-container {
-  margin-top: 40px;
-  color: #2BB031;
-  font-size: 14px;
 }
 
 /* .slider.slider-horizontal .slider-tick-container div:nth-of-type(1) {

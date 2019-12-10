@@ -144,19 +144,35 @@ function getEstimate() {
   let outgoingTotal = 0
 
   selected.forEach(value => {
-    if (receiveCheckValue) {
-      let iData = incomingData.find(data => data.indexOf(value.id) !== -1)
+    console.log("DATA", value)
 
-      if (iData && Number(iData[9])) {
-        incomingTotal += Number(iData[9])
-      }
+    if (receiveCheckValue) {
+      let iData = incomingData.filter(data => data.indexOf(value.title) !== -1)
+      let count = 0;
+
+      let iTotal = iData.reduce((total, current) =>{
+        if(Number(current[9])) {
+          count++
+          total = Number(current[9])+total
+        }
+        return total
+      }, 0)
+
+      incomingTotal = iTotal / count
     }
     if (sendCheckValue) {
-      let oData = outgoingData.find(data => data.indexOf(value.id) !== -1)
+      let oData = outgoingData.filter(data => data.indexOf(value.title) !== -1)
+      let count = 0;
 
-      if (oData && Number(oData[6])) {
-        outgoingTotal += Number(oData[6])
-      }
+      let oTotal = oData.reduce((total, current) =>{
+        if(Number(current[6])) {
+          count++
+          total = Number(current[6])+total
+        }
+        return total
+      }, 0)
+
+      outgoingTotal = oTotal / count
     }
   })
 
