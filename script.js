@@ -201,6 +201,10 @@ var slider = new Slider('#message-count', {
 });
 
 function setDummyData() {
+  let sliderCTA = document.getElementById("slider-cta")
+
+  sliderCTA.innerHTML = '<span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span> <span>Loading...</span>'
+
   fetch('https://my.api.mockaroo.com/plivo.json?key=e66ba0c0')
     .then(response => response.json())
     .then(response => {
@@ -210,6 +214,7 @@ function setDummyData() {
       formElement.elements["work_email"].value = response.work_email
       formElement.elements["phone"].value = Number(response.phone)
 
+      sliderCTA.innerHTML = 'Contact Sales'
       $('#form-container').collapse()
     })
 }
