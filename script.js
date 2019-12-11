@@ -140,7 +140,7 @@ function deleteTag(id) {
 
 let flag = true;
 
-function getEstimate() {
+function getEstimate(volume = 500) {
 
   let incomingTotal = 0
   let outgoingTotal = 0
@@ -161,6 +161,7 @@ function getEstimate() {
       if (count) {
         iTotal = iTotal / count
         incomingTotal += iTotal
+        incomingTotal *= volume
       }
     }
     if (sendCheckValue) {
@@ -178,6 +179,7 @@ function getEstimate() {
       if (count) {
         oTotal = oTotal / count
         outgoingTotal += oTotal
+        outgoingTotal *= volume
       }
     }
   })
@@ -191,6 +193,8 @@ function getEstimate() {
 
 var slider = new Slider('#message-count', {
   formatter: function (value) {
+    getEstimate(value)
+
     if (value >= 2000) {
       handleContactSales()
     } else {
