@@ -190,7 +190,7 @@ function getEstimate(volume = 1) {
   document.getElementById("send-value").innerHTML = `$ ${outgoingTotal.toFixed(4)}`
   document.getElementById("receive-value").innerHTML = `$ ${incomingTotal.toFixed(4)}`
 
-  if (selected.length && (sendCheckValue || receiveCheckValue))  {
+  if (selected.length && (sendCheckValue || receiveCheckValue)) {
     flag && $('#cost-container').collapse()
     flag = true
   }
@@ -214,14 +214,32 @@ function setDummyData() {
 
   sliderCTA.innerHTML = '<span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span> <span>Loading...</span>'
 
-  fetch('https://my.api.mockaroo.com/plivo.json?key=e66ba0c0')
+  let url = 'https://person.clearbit.com/v2/combined/find?email=nixon@plivo.com'
+  let username = 'sk_826457d604bc69ecddc77cec1613afa7'
+  let password = ''
+
+  let header = new Headers()
+
+  let encoded = window.btoa(`${username}:${password}`)
+  let auth = `Basic ${encoded}`
+
+  header.append('Authorization', auth)
+
+  fetch(url, {
+    method: 'GET',
+    headers: header,
+    credentials: 'same-origin'
+  })
     .then(response => response.json())
     .then(response => {
       let formElement = document.getElementById("contact-form")
-      formElement.elements["first_name"].value = response.first_name
-      formElement.elements["last_name"].value = response.last_name
-      formElement.elements["work_email"].value = response.work_email
-      formElement.elements["phone"].value = Number(response.phone)
+
+      let person = response.person
+
+      formElement.elements["first_name"].value = person.name.givenName
+      formElement.elements["last_name"].value = person.name.familyName
+      formElement.elements["work_email"].value = person.email
+      // formElement.elements["phone"].value = Number(person.phone)
 
       sliderCTA.innerHTML = 'Contact Sales'
       $('#form-container').collapse()
