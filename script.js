@@ -115,6 +115,7 @@ function addInList(title, id) {
   document.getElementById("selected").appendChild(element)
 
   checkAndUpdateCTA()
+  getEstimate()
 }
 
 function handleEvent(event) {
@@ -136,6 +137,7 @@ function deleteTag(id) {
   map.validateData()
 
   checkAndUpdateCTA()
+  getEstimate()
 }
 
 let flag = true;
@@ -161,7 +163,6 @@ function getEstimate(volume = 500) {
       if (count) {
         iTotal = iTotal / count
         incomingTotal += iTotal
-        incomingTotal *= volume
       }
     }
     if (sendCheckValue) {
@@ -179,16 +180,20 @@ function getEstimate(volume = 500) {
       if (count) {
         oTotal = oTotal / count
         outgoingTotal += oTotal
-        outgoingTotal *= volume
       }
     }
   })
 
+  incomingTotal *= volume
+  outgoingTotal *= volume
+
   document.getElementById("send-value").innerHTML = `$ ${outgoingTotal.toFixed(4)}`
   document.getElementById("receive-value").innerHTML = `$ ${incomingTotal.toFixed(4)}`
 
-  flag && $('#cost-container').collapse()
-  flag = false;
+  if (selected.length && (sendCheckValue || receiveCheckValue))  {
+    flag && $('#cost-container').collapse()
+    flag = true
+  }
 }
 
 var slider = new Slider('#message-count', {
