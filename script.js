@@ -142,7 +142,7 @@ function deleteTag(id) {
 
 let flag = true;
 
-function getEstimate(volume = 500) {
+function getEstimate(volume = 1) {
 
   let incomingTotal = 0
   let outgoingTotal = 0
