@@ -209,12 +209,12 @@ var slider = new Slider('#message-count', {
   }
 });
 
-function setDummyData() {
-  let sliderCTA = document.getElementById("slider-cta")
+function setDummyData(email) {
+  // let sliderCTA = document.getElementById("slider-cta")
 
-  sliderCTA.innerHTML = '<span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span> <span>Loading...</span>'
+  // sliderCTA.innerHTML = '<span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span> <span>Loading...</span>'
 
-  let url = 'https://person.clearbit.com/v2/combined/find?email=nixon@plivo.com'
+  let url = `https://person.clearbit.com/v2/combined/find?email=${email}`
   let username = 'sk_826457d604bc69ecddc77cec1613afa7'
   let password = ''
 
@@ -236,21 +236,33 @@ function setDummyData() {
 
       let person = response.person
 
-      formElement.elements["first_name"].value = person.name.givenName
-      formElement.elements["last_name"].value = person.name.familyName
-      formElement.elements["work_email"].value = person.email
-      // formElement.elements["phone"].value = Number(person.phone)
-
-      sliderCTA.innerHTML = 'Contact Sales'
-      $('#form-container').collapse()
+      if (person) {
+        formElement.elements["first_name"].value = person.name.givenName
+        formElement.elements["last_name"].value = person.name.familyName
+        formElement.elements["email"].value = person.email
+      }
+      // sliderCTA.innerHTML = 'Contact Sales'
+      // $('#form-container').collapse()
     })
+}
+
+let input = document.querySelector('#email');
+
+input.addEventListener('input', handleEmailInput);
+
+function handleEmailInput(e) {
+  if (e.target.validity.valid) {
+    setDummyData(e.target.value)
+  }
 }
 
 function handleContactSales() {
   let sliderCTA = document.getElementById("slider-cta")
 
   sliderCTA.innerHTML = 'Contact Sales'
-  sliderCTA.onclick = setDummyData
+
+  // sliderCTA.onclick = setDummyData
+  sliderCTA.onclick = function () { $('#form-container').collapse() }
 }
 
 function handleViewPricing() {
