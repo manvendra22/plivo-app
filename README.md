@@ -2,6 +2,11 @@
 
 > SMS Price Calculator was a hiring challenge that uses AmCharts world chart to select countries and Plivo sms cost data to calculate the cost for selected services.
 
+
+### Live link
+
+https://sms-price-calculator.netlify.app/
+
 ### Tech stack:
 
 - Javascript
