@@ -7,7 +7,7 @@ let receiveCheckValue = false;
 
 (function readDataOnLoad() {
   readIncomingTextFile()
-  readOutcomingTextFile()
+  readOutgoingTextFile()
 })()
 
 function readIncomingTextFile() {
@@ -29,7 +29,7 @@ function readIncomingTextFile() {
   rawFile.send(null);
 };
 
-function readOutcomingTextFile() {
+function readOutgoingTextFile() {
   var rawFile = new XMLHttpRequest();
   rawFile.open("GET", "./data/plivo_outgoing.csv", true);
   rawFile.onreadystatechange = function () {
@@ -122,6 +122,22 @@ function handleEvent(event) {
   deleteTag(event.target.id)
 }
 
+$('#contactsales-cta').click(function () { $('#form-container').collapse() })
+
+$('#viewpricing-cta').click(function () {
+  window.open('https://www.plivo.com/sms/pricing/us/', '_blank');
+})
+
+$('#receiveCheck').click(function () {
+  receiveCheckValue = receiveCheck.checked
+  checkAndUpdateCTA()
+})
+
+$('#sendCheck').click(function () {
+  sendCheckValue = sendCheck.checked
+  checkAndUpdateCTA()
+})
+
 function deleteTag(id) {
   let element = document.getElementById(id);
   element.parentNode.removeChild(element);
@@ -140,7 +156,25 @@ function deleteTag(id) {
   getEstimate()
 }
 
+function checkAndUpdateCTA() {
+  let estimateCTA = $('#estimate-cta')
+
+  if (selected.length && (sendCheckValue || receiveCheckValue)) {
+    estimateCTA.attr('disabled', false)
+  } else {
+    estimateCTA.attr('disabled', true)
+  }
+}
+
 let flag = true;
+
+let slider = new Slider('#message-count', {
+  formatter: function (value) {
+    getEstimate(value)
+
+    return 'Current value: ' + value;
+  }
+});
 
 function getEstimate(volume = 1) {
 
@@ -196,24 +230,17 @@ function getEstimate(volume = 1) {
   }
 }
 
-var slider = new Slider('#message-count', {
-  formatter: function (value) {
-    getEstimate(value)
+$('#email').on('input', handleEmailInput)
 
-    if (value >= 2000) {
-      handleContactSales()
-    } else {
-      handleViewPricing()
-    }
-    return 'Current value: ' + value;
+function handleEmailInput(e) {
+  if (e.target.validity.valid) {
+    setDummyData(e.target.value)
   }
-});
+}
+
+let formElem = $('#contact-form')
 
 function setDummyData(email) {
-  // let sliderCTA = document.getElementById("slider-cta")
-
-  // sliderCTA.innerHTML = '<span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span> <span>Loading...</span>'
-
   let url = `https://person.clearbit.com/v2/combined/find?email=${email}`
   let username = 'sk_826457d604bc69ecddc77cec1613afa7'
   let password = ''
@@ -232,82 +259,29 @@ function setDummyData(email) {
   })
     .then(response => response.json())
     .then(response => {
-      let formElement = document.getElementById("contact-form")
 
       let person = response.person
 
       if (person) {
-        formElement.elements["first_name"].value = person.name.givenName
-        formElement.elements["last_name"].value = person.name.familyName
-        formElement.elements["email"].value = person.email
+        formElem.elements["first_name"].value = person.name.givenName
+        formElem.elements["last_name"].value = person.name.familyName
+        formElem.elements["email"].value = person.email
       }
-      // sliderCTA.innerHTML = 'Contact Sales'
-      // $('#form-container').collapse()
     })
 }
 
-let input = document.querySelector('#email');
-
-input.addEventListener('input', handleEmailInput);
-
-function handleEmailInput(e) {
-  if (e.target.validity.valid) {
-    setDummyData(e.target.value)
-  }
-}
-
-function handleContactSales() {
-  let sliderCTA = document.getElementById("slider-cta")
-
-  sliderCTA.innerHTML = 'Contact Sales'
-
-  // sliderCTA.onclick = setDummyData
-  sliderCTA.onclick = function () { $('#form-container').collapse() }
-}
-
-function handleViewPricing() {
-  let sliderCTA = document.getElementById("slider-cta")
-
-  sliderCTA.innerHTML = 'View Pricing'
-  sliderCTA.onclick = function (e) {
-    window.open('https://www.plivo.com/sms/pricing/us/', '_blank');
-  }
-}
-
-function checkAndUpdateCTA() {
-  let estimateCTA = document.getElementById('estimate-cta')
-
-  if (selected.length && (sendCheckValue || receiveCheckValue)) {
-    estimateCTA.disabled = false
-  } else {
-    estimateCTA.disabled = true
-  }
-}
-
-let receiveCheck = document.getElementById('receiveCheck')
-let sendCheck = document.getElementById('sendCheck')
-
-receiveCheck.onclick = function () {
-  receiveCheckValue = receiveCheck.checked
-  checkAndUpdateCTA()
-}
-
-sendCheck.onclick = function () {
-  sendCheckValue = sendCheck.checked
-  checkAndUpdateCTA()
-}
-
-let formElem = document.getElementById("contact-form")
-
-formElem.onsubmit = async (e) => {
+formElem.submit(async (e) => {
   e.preventDefault();
 
   let response = await fetch('https://hooks.zapier.com/hooks/catch/6257988/o6qgzyj/', {
     method: 'POST',
-    body: new FormData(formElem)
+    body: new FormData($(formElem))
   });
 
   let result = await response.json();
 
   alert(result.status);
-};
+})
+
+
+
