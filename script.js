@@ -238,8 +238,6 @@ function handleEmailInput(e) {
   }
 }
 
-let formElem = $('#contact-form')
-
 function setDummyData(email) {
   let url = `https://person.clearbit.com/v2/combined/find?email=${email}`
   let username = 'sk_826457d604bc69ecddc77cec1613afa7'
@@ -263,19 +261,22 @@ function setDummyData(email) {
       let person = response.person
 
       if (person) {
-        formElem.elements["first_name"].value = person.name.givenName
-        formElem.elements["last_name"].value = person.name.familyName
-        formElem.elements["email"].value = person.email
+        $('input[name|="first_name"]').val(person.name.givenName)
+        $('input[name|="last_name"]').val(person.name.familyName)
+        // $('input[name|="email"]').val(person.email)
       }
     })
 }
 
-formElem.submit(async (e) => {
+let formElem = $('#contact-form')
+
+formElem.on('submit', async function (e) {
   e.preventDefault();
+  let form = $(this);
 
   let response = await fetch('https://hooks.zapier.com/hooks/catch/6257988/o6qgzyj/', {
     method: 'POST',
-    body: new FormData($(formElem))
+    body: new FormData(form[0])
   });
 
   let result = await response.json();
