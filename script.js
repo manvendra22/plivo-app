@@ -268,9 +268,7 @@ function setDummyData(email) {
     })
 }
 
-let formElem = $('#contact-form')
-
-formElem.on('submit', async function (e) {
+$('#contact-form').on('submit', async function (e) {
   e.preventDefault();
   let form = $(this);
 
