@@ -7,6 +7,8 @@
 
 https://sms-price-calculator.netlify.app/
 
+![Screenshot](sms_price_calculator.png)
+
 ### Tech stack:
 
 - Javascript
