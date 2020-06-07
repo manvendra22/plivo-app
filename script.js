@@ -4,11 +4,8 @@ let outgoingData = [];
 let sendCheckValue = false;
 let receiveCheckValue = false;
 
-
-(function readDataOnLoad() {
-  readIncomingTextFile()
-  readOutgoingTextFile()
-})()
+readIncomingTextFile()
+readOutgoingTextFile()
 
 function readIncomingTextFile() {
   var rawFile = new XMLHttpRequest();
@@ -112,7 +109,7 @@ function addInList(title, id) {
   element.classList.add('tag')
   element.onclick = handleEvent;
 
-  document.getElementById("selected").appendChild(element)
+  $('#selected').appendChild(element)
 
   checkAndUpdateCTA()
   getEstimate()
@@ -139,7 +136,7 @@ $('#sendCheck').click(function () {
 })
 
 function deleteTag(id) {
-  let element = document.getElementById(id);
+  let element = $(`#${id}`)
   element.parentNode.removeChild(element);
 
   selected = selected.filter(value => value.id != element.id)
@@ -221,8 +218,8 @@ function getEstimate(volume = 1) {
   incomingTotal *= volume
   outgoingTotal *= volume
 
-  document.getElementById("send-value").innerHTML = `$ ${outgoingTotal.toFixed(4)}`
-  document.getElementById("receive-value").innerHTML = `$ ${incomingTotal.toFixed(4)}`
+  $('#send-value').innerHTML = `$ ${outgoingTotal.toFixed(4)}`
+  $('#receive-value').innerHTML = `$ ${incomingTotal.toFixed(4)}`
 
   if (selected.length && (sendCheckValue || receiveCheckValue)) {
     flag && $('#cost-container').collapse()
