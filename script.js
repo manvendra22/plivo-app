@@ -109,7 +109,7 @@ function addInList(title, id) {
   element.classList.add('tag')
   element.onclick = handleEvent;
 
-  $('#selected').appendChild(element)
+  $('#selected').append(element)
 
   checkAndUpdateCTA()
   getEstimate()
