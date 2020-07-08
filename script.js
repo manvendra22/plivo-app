@@ -137,12 +137,12 @@ $('#sendCheck').click(function () {
 
 function deleteTag(id) {
   let element = $(`#${id}`)
-  element.parentNode.removeChild(element);
+  element.remove();
 
-  selected = selected.filter(value => value.id != element.id)
+  selected = selected.filter(value => value.id != id)
 
   for (let i = 0; i < map.dataProvider.areas.length; i++) {
-    if (map.dataProvider.areas[i].showAsSelected && map.dataProvider.areas[i].id == element.id) {
+    if (map.dataProvider.areas[i].showAsSelected && map.dataProvider.areas[i].id == id) {
       map.dataProvider.areas[i].showAsSelected = false
     }
   }
