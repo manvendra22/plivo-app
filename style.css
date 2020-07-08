@@ -232,9 +232,6 @@ button:disabled {
 
 .contact-form {
   margin: 40px 0;
-  min-height: 400px;
-  display: flex;
-  justify-content: center;
   background-color: #F7F8FC;
   padding: 50px;
   text-align: left;
