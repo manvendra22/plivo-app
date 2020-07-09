@@ -35,93 +35,51 @@ h2 {
   margin: 20px 0;
 }
 
-.checkbox-container>span {
-  display: flex;
-  margin-right: 25px;
-}
-
-.checkbox-container>span:nth-child(1) {
-  font-weight: 600;
-}
-
 /* Styling Checkbox Starts */
-.checkbox-label {
-  display: block;
-  position: relative;
-  margin: auto;
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  clear: both;
-  top: -6px;
-  left: -15px;
-}
-
-.checkbox-label input {
+.checkbox-custom input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
 }
 
-.checkbox-label .checkbox-custom {
+.checkbox-custom {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  padding-left: 36px;
+}
+
+.checkbox-mark {
   position: absolute;
-  top: 5px;
-  left: 5px;
-  height: 14px;
-  width: 14px;
-  background-color: transparent;
+  top: 2px;
+  left: 10px;
+  height: 18px;
+  width: 18px;
+  border: 2px solid #2BB031;
   border-radius: 2px;
-  transition: all 0.3s ease-out;
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -ms-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  border: 2px solid #2BB031;
 }
 
-
-.checkbox-label input:checked~.checkbox-custom {
-  background-color: #2BB031;
-  -webkit-transform: rotate(0deg) scale(1);
-  -ms-transform: rotate(0deg) scale(1);
-  transform: rotate(0deg) scale(1);
-  opacity: 1;
-  border: 2px solid #2BB031;
-}
-
-
-.checkbox-label .checkbox-custom::after {
-  position: absolute;
+.checkbox-mark:after {
   content: "";
-  height: 0px;
-  width: 0px;
-  border: solid #fff;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(0deg) scale(0);
-  -ms-transform: rotate(0deg) scale(0);
-  transform: rotate(0deg) scale(0);
-  opacity: 1;
-  transition: all 0.3s ease-out;
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -ms-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-}
-
-
-.checkbox-label input:checked~.checkbox-custom::after {
-  -webkit-transform: rotate(45deg) scale(1);
-  -ms-transform: rotate(45deg) scale(1);
-  transform: rotate(45deg) scale(1);
-  opacity: 1;
-  left: 2px;
-  top: -1px;
+  position: absolute;
+  display: none;
+  left: 4px;
+  top: 0px;
   width: 6px;
-  height: 10px;
+  height: 11px;
   border: solid #fff;
   border-width: 0 2px 2px 0;
-  background-color: transparent;
-  border-radius: 0;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.checkbox-custom input:checked~.checkbox-mark {
+  background-color: #2BB031;
+  border: 2px solid #2BB031;
+}
+
+.checkbox-custom input:checked~.checkbox-mark:after {
+  display: block;
 }
 
 /* Styling Dynamic Tags Starts */
@@ -274,16 +232,3 @@ button:disabled {
   background: #312E5A;
   border: none
 }
-
-/* .slider.slider-horizontal .slider-tick-container div:nth-of-type(1) {
-  left: 10% !important
-}
-.slider.slider-horizontal .slider-tick-container div:nth-of-type(2) {
-  left: 35% !important
-}
-.slider.slider-horizontal .slider-tick-container div:nth-of-type(3) {
-  left: 63% !important
-}
-.slider.slider-horizontal .slider-tick-container div:nth-of-type(4) {
-  left: 90% !important
-} */
