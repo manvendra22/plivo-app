@@ -218,8 +218,8 @@ function getEstimate(volume = 1) {
   incomingTotal *= volume
   outgoingTotal *= volume
 
-  $('#send-value').innerHTML = `$ ${outgoingTotal.toFixed(4)}`
-  $('#receive-value').innerHTML = `$ ${incomingTotal.toFixed(4)}`
+  $('#send-value').html(`$ ${outgoingTotal.toFixed(4)}`)
+  $('#receive-value').html(`$ ${incomingTotal.toFixed(4)}`)
 
   if (selected.length && (sendCheckValue || receiveCheckValue)) {
     flag && $('#cost-container').collapse()
@@ -231,11 +231,11 @@ $('#email').on('input', handleEmailInput)
 
 function handleEmailInput(e) {
   if (e.target.validity.valid) {
-    setDummyData(e.target.value)
+    setData(e.target.value)
   }
 }
 
-function setDummyData(email) {
+function setData(email) {
   let url = `https://person.clearbit.com/v2/combined/find?email=${email}`
   let username = 'sk_826457d604bc69ecddc77cec1613afa7'
   let password = ''
@@ -260,7 +260,6 @@ function setDummyData(email) {
       if (person) {
         $('input[name|="first_name"]').val(person.name.givenName)
         $('input[name|="last_name"]').val(person.name.familyName)
-        // $('input[name|="email"]').val(person.email)
       }
     })
 }
