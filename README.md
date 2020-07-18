@@ -7,7 +7,7 @@
 
 https://sms-price-calculator.netlify.app/
 
-![Screenshot](sms_price_calculator.png)
+![Screenshot](https://res.cloudinary.com/dracarys/image/upload/v1595049189/sms_price.png)
 
 ### Tech stack:
 
