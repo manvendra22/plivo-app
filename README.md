@@ -1,6 +1,7 @@
 # SMS Price Calculator
 
-> SMS Price Calculator was a hiring challenge that uses AmCharts world chart to select countries and Plivo SMS cost data to calculate the cost for selected services. It uses Clearbit API to auto-fill person details using their email id and save the details in Google sheet using Zapier hook.
+> SMS Price Calculator is a web app that uses AmCharts world chart to select countries and Plivo SMS cost data (from Excel file) to calculate the cost for selected services.
+It uses Clearbit API to auto-fill person details using provided email id and save the details in Google sheet using Zapier hook.
 
 
 ### Live link
